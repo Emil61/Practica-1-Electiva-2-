@@ -6,58 +6,146 @@
   <title>Electiva 2 - Emil Comarazamy</title>
   <style>
     /* Página a altura completa + footer abajo */
-    html, body { height: 100%; margin: 0; display: flex; flex-direction: column; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #eef2f3; color: #333; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
 
-    header { background: #222; color: #fff; text-align: center; padding: 40px 20px; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #eef2f3;
+      color: #333;
+    }
+
+    header {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
     header h1 { margin: 0; font-size: 2.2rem; }
     header p  { margin-top: 10px; font-size: 1rem; color: #ddd; }
 
     .container {
-      flex: 1; display: flex; flex-wrap: wrap; max-width: 1100px;
-      margin: 40px auto 0; gap: 20px; padding: 0 20px;
+      flex: 1; /* empuja el footer hacia abajo */
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 40px auto 0;
+      gap: 20px;
+      padding: 0 20px;
     }
 
-    .info, .tech, .process { background: #fff; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.08); }
-    .info { flex: 2; padding: 30px; }
-    .info h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; color: #444; }
+    .info, .tech, .process {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    }
+
+    .info {
+      flex: 2;
+      padding: 30px;
+    }
+
+    .info h2 {
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
     .info p { font-size: 1.1rem; margin: 12px 0; }
     .info p strong { color: #111; }
 
-    .tech { flex: 1; padding: 20px; }
-    .tech h2 { text-align: center; font-size: 1.4rem; margin-bottom: 15px; color: #444; }
+    .tech {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .tech h2 {
+      text-align: center;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #444;
+    }
+
     .tech ul { list-style: none; padding: 0; margin: 0; }
-    .tech li { background: #f5f7fa; padding: 12px; border-radius: 8px; margin: 8px 0; font-size: 1rem; transition: background 0.2s; }
+    .tech li {
+      background: #f5f7fa;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 8px 0;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
     .tech li:hover { background: #e0e7ff; }
 
-    /* Sección técnica: Proceso de Desarrollo */
-    .process { width: calc(100% - 40px); max-width: 1100px; margin: 20px auto 40px; padding: 24px; }
-    .process h2 { margin: 0 0 6px; color: #444; }
-    .process p.desc { margin: 0 0 16px; color: #666; }
+    /* Nueva sección: Proceso de Desarrollo */
+    .process {
+      width: calc(100% - 40px);
+      max-width: 1100px;
+      margin: 20px auto 40px;
+      padding: 24px;
+    }
 
-    .steps { counter-reset: paso; list-style: none; padding: 0; margin: 0; display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+    .process h2 {
+      margin: 0 0 14px;
+      color: #444;
+    }
+
+    .process p.desc {
+      margin: 0 0 16px;
+      color: #666;
+    }
+
+    .steps {
+      counter-reset: paso;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
     .steps li {
-      background: #f7f9ff; border: 1px solid #e6ebff; border-radius: 10px;
-      padding: 14px 14px 14px 54px; position: relative;
+      background: #f7f9ff;
+      border: 1px solid #e6ebff;
+      border-radius: 10px;
+      padding: 14px 14px 14px 50px;
+      position: relative;
+      min-height: 52px;
     }
+
     .steps li::before {
-      counter-increment: paso; content: counter(paso);
-      position: absolute; left: 14px; top: 16px;
-      width: 28px; height: 28px; display: grid; place-items: center;
-      background: #4361ee; color: #fff; font-weight: 700; border-radius: 50%;
-      box-shadow: 0 2px 6px rgba(67,97,238,.4);
+      counter-increment: paso;
+      content: counter(paso);
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      background: #4361ee;
+      color: #fff;
+      font-weight: 700;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(67,97,238,0.4);
     }
-    .step-title { margin: 0 0 6px; font-weight: 700; color: #25304a; }
-    .step-text  { margin: 0 0 10px; color: #424b62; font-size: .98rem; }
 
-    /* Bloques de código */
-    pre { margin: 8px 0 0; background: #0f172a; color: #e5e7eb; padding: 10px 12px;
-      border-radius: 8px; overflow-x: auto; font-size: .87rem; line-height: 1.35; }
-    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
-    .tree { background: #0b1220; }
-
-    footer { text-align: center; padding: 20px; background: #222; color: #aaa; font-size: 0.9rem; margin-top: auto; }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #222;
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-top: auto; /* asegura que quede al final */
+    }
   </style>
 </head>
 <body>
@@ -68,6 +156,7 @@
   </header>
 
   <div class="container">
+    <!-- Información principal -->
     <div class="info">
       <h2>Información del Estudiante</h2>
       <p><strong>Estudiante:</strong> Emil Comarazamy</p>
@@ -76,6 +165,7 @@
       <p><strong>Actividad:</strong> S3: Herramientas y Tecnologías de DevOps</p>
     </div>
 
+    <!-- Tecnologías -->
     <div class="tech">
       <h2>🔧 Tecnologías Usadas</h2>
       <ul>
@@ -88,75 +178,21 @@
   </div>
 
   <section class="process">
-    <h2>🧩 Proceso de Desarrollo</h2>
-    <p class="desc">Checklist técnico para publicar el sitio con GitHub Pages.</p>
-
+    <h2>🛠 Proceso de Desarrollo</h2>
+    <p class="desc">Pasos seguidos para publicar el sitio con GitHub Pages:</p>
     <ul class="steps">
-      <li>
-        <p class="step-title">Crear repositorio (público)</p>
-        <p class="step-text">Nombre: <code>Practica-1-Electiva-2</code>. Inicializar con <code>README.md</code>.</p>
-        <pre><code># Desde GitHub (GUI) o CLI
-# gh repo create Emil61/Practica-1-Electiva-2 --public --confirm</code></pre>
-      </li>
-
-      <li>
-        <p class="step-title">Clonar y preparar estructura</p>
-        <p class="step-text">Crear la página inicial en la raíz del repo.</p>
-        <pre><code>git clone https://github.com/Emil61/Practica-1-Electiva-2.git
-cd Practica-1-Electiva-2
-# crear index.html en /(root)</code></pre>
-      </li>
-
-      <li>
-        <p class="step-title">Primer commit y push</p>
-        <p class="step-text">Versionar archivos y enviar a <code>main</code>.</p>
-        <pre><code>git add .
-git commit -m "Add index.html inicial"
-git push origin main</code></pre>
-      </li>
-
-      <li>
-        <p class="step-title">Activar GitHub Pages</p>
-        <p class="step-text">Settings → Pages → <b>Source</b>: Deploy from a branch → <b>Branch</b>: main / (root) → Save. Activar <b>Enforce HTTPS</b>.</p>
-      </li>
-
-      <li>
-        <p class="step-title">Verificar build</p>
-        <p class="step-text">Revisar el workflow de Pages.</p>
-        <pre><code>GitHub → Actions → "pages-build-deployment"
-# Debe aparecer con ✅</code></pre>
-      </li>
-
-      <li>
-        <p class="step-title">Acceder al sitio</p>
-        <p class="step-text">URL pública:</p>
-        <pre><code>https://emil61.github.io/Practica-1-Electiva-2/</code></pre>
-        <p class="step-text">Evitar caché del navegador:</p>
-        <pre><code>https://emil61.github.io/Practica-1-Electiva-2/?v=2</code></pre>
-      </li>
-
-      <li>
-        <p class="step-title">Estructura final del repositorio</p>
-        <pre class="tree"><code>Practica-1-Electiva-2/
-├─ index.html
-└─ README.md</code></pre>
-      </li>
-
-      <li>
-        <p class="step-title">Troubleshooting rápido</p>
-        <pre><code># 404: no hay index.html en /(root) o rama incorrecta
-# Cambio no se ve: esperar ~1–2 min o usar ?v=#
-# Error de build: revisar Actions → logs del job</code></pre>
-      </li>
+      <li>Planificación del contenido y estructura básica de la página.</li>
+      <li>Creación del repositorio <em>Practica-1-Electiva-2</em> en GitHub.</li>
+      <li>Configuración de GitHub Pages. </li>
+      <li>Creación del archivo <code>index.html</code> con diseño propio y estilos CSS.</li>
+      <li>Commit y push de los cambios al repositorio.</li>
+      <li>Pagina ya disponible en Github.io.</li>
     </ul>
   </section>
 
   <footer>
     © 2025 - Electiva 2 | DevOps Tools and Technologies
   </footer>
-
-</body>
-</html>
 
 </body>
 </html>
