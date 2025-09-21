@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Electiva 2 - Emil Comarazamy</title>
   <style>
+    /* Página a altura completa + footer abajo */
     html, body {
       height: 100%;
       margin: 0;
@@ -25,33 +26,28 @@
       padding: 40px 20px;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.2rem;
-    }
-
-    header p {
-      margin-top: 10px;
-      font-size: 1rem;
-      color: #ddd;
-    }
+    header h1 { margin: 0; font-size: 2.2rem; }
+    header p  { margin-top: 10px; font-size: 1rem; color: #ddd; }
 
     .container {
-      flex: 1; 
+      flex: 1; /* empuja el footer hacia abajo */
       display: flex;
       flex-wrap: wrap;
       max-width: 1100px;
-      margin: 40px auto;
+      margin: 40px auto 0;
       gap: 20px;
       padding: 0 20px;
     }
 
+    .info, .tech, .process {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    }
+
     .info {
       flex: 2;
-      background: white;
       padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
     }
 
     .info h2 {
@@ -61,21 +57,12 @@
       color: #444;
     }
 
-    .info p {
-      font-size: 1.1rem;
-      margin: 12px 0;
-    }
-
-    .info p strong {
-      color: #111;
-    }
+    .info p { font-size: 1.1rem; margin: 12px 0; }
+    .info p strong { color: #111; }
 
     .tech {
       flex: 1;
-      background: #ffffff;
       padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
     }
 
     .tech h2 {
@@ -85,12 +72,7 @@
       color: #444;
     }
 
-    .tech ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
+    .tech ul { list-style: none; padding: 0; margin: 0; }
     .tech li {
       background: #f5f7fa;
       padding: 12px;
@@ -99,9 +81,61 @@
       font-size: 1rem;
       transition: background 0.2s;
     }
+    .tech li:hover { background: #e0e7ff; }
 
-    .tech li:hover {
-      background: #e0e7ff;
+    /* Nueva sección: Proceso de Desarrollo */
+    .process {
+      width: calc(100% - 40px);
+      max-width: 1100px;
+      margin: 20px auto 40px;
+      padding: 24px;
+    }
+
+    .process h2 {
+      margin: 0 0 14px;
+      color: #444;
+    }
+
+    .process p.desc {
+      margin: 0 0 16px;
+      color: #666;
+    }
+
+    .steps {
+      counter-reset: paso;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .steps li {
+      background: #f7f9ff;
+      border: 1px solid #e6ebff;
+      border-radius: 10px;
+      padding: 14px 14px 14px 50px;
+      position: relative;
+      min-height: 52px;
+    }
+
+    .steps li::before {
+      counter-increment: paso;
+      content: counter(paso);
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      background: #4361ee;
+      color: #fff;
+      font-weight: 700;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(67,97,238,0.4);
     }
 
     footer {
@@ -110,7 +144,7 @@
       background: #222;
       color: #aaa;
       font-size: 0.9rem;
-      margin-top: auto; /* Esto asegura que se quede en la parte más baja */
+      margin-top: auto; /* asegura que quede al final */
     }
   </style>
 </head>
@@ -142,6 +176,21 @@
       </ul>
     </div>
   </div>
+
+  <!-- Nueva sección que añade más contenido y empuja el footer -->
+  <section class="process">
+    <h2>🛠 Proceso de Desarrollo</h2>
+    <p class="desc">Pasos seguidos para publicar el sitio con GitHub Pages:</p>
+    <ul class="steps">
+      <li>Planificación del contenido y estructura básica de la página.</li>
+      <li>Creación del repositorio <em>Practica-1-Electiva-2</em> en GitHub.</li>
+      <li>Configuración de GitHub Pages (Source: <strong>Deploy from a branch</strong>, Branch: <strong>main</strong>, Carpeta: <strong>/(root)</strong>).</li>
+      <li>Creación del archivo <code>index.html</code> con diseño propio y estilos CSS.</li>
+      <li>Commit y push de los cambios al repositorio.</li>
+      <li>Verificación del despliegue en la URL: <code>https://emil61.github.io/Practica-1-Electiva-2/</code>.</li>
+      <li>Ajustes: sección de tecnologías, corrección del footer y sección “Proceso de Desarrollo”.</li>
+    </ul>
+  </section>
 
   <footer>
     © 2025 - Electiva 2 | DevOps Tools and Technologies
